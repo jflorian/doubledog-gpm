@@ -1,4 +1,4 @@
-# /etc/puppet/modules/gpm/manifests/init.pp
+# modules/gpm/manifests/init.pp
 
 class gpm {
 
