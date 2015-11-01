@@ -19,8 +19,8 @@ class gpm {
     }
 
     service { 'gpm':
-        enable     => true,
         ensure     => running,
+        enable     => true,
         hasrestart => true,
         hasstatus  => true,
         require    => [
