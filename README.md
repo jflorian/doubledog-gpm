@@ -38,10 +38,28 @@ This module lets you manage gpm, the Linux console mouse server.
 
 **Classes:**
 
+* [gpm](#gpm-class)
+
 **Defined types:**
 
 
 ### Classes
+
+#### gpm class
+
+This class manages the gpm server.
+
+##### `enable`
+Instance is to be started at boot.  Either `true` (default) or `false`.
+
+##### `ensure`
+Instance is to be `'running'` (default) or `'stopped'`.  Alternatively, a Boolean value may also be used with `true` equivalent to `'running'` and `false` equivalent to `'stopped'`.
+
+##### `packages`
+An array of package names needed for the gpm installation.  The default should be correct for supported platforms.
+
+##### `service`
+The service name of the gpm daemon.  The default should be correct for supported platforms.
 
 
 ### Defined types

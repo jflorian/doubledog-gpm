@@ -1,2 +1,0 @@
-# Configuration for gpm, the Linux console mouse driver daemon.
-OPTIONS="-B 321"

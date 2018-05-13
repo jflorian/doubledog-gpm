@@ -1,34 +1,52 @@
-# modules/gpm/manifests/init.pp
+#
+# == Class: gpm
+#
+# Manages the gpm mouse server.
+#
+# === Authors
+#
+#   John Florian <jflorian@doubledog.org>
+#
+# === Copyright
+#
+# This file is part of the doubledog-gpm Puppet module.
+# Copyright 2010-2018 John Florian
+# SPDX-License-Identifier: GPL-3.0-or-later
 
-class gpm {
 
-    package { 'gpm':
-  ensure  => installed,
-    }
+class gpm (
+        Boolean                                      $enable,
+        Variant[Boolean, Enum['running', 'stopped']] $ensure,
+        Array[String[1], 1]                          $packages,
+        String[1]                                    $service,
+    ) {
 
-    file { '/etc/sysconfig/mouse':
-        # don't forget to verify these!
-        group   => 'root',
-        mode    => '0640',
-        owner   => 'root',
-        require => Package['gpm'],
-        seluser => 'system_u',
-        selrole => 'object_r',
-        seltype => 'etc_t',
-        source  => 'puppet:///modules/gpm/mouse',
-    }
+    package { $packages:
+        ensure => installed,
+        notify => Service[$service],
+    } ->
 
-    service { 'gpm':
-        ensure     => running,
-        enable     => true,
+    file {
+        default:
+            owner   => 'root',
+            group   => 'root',
+            mode    => '0640',
+            seluser => 'system_u',
+            selrole => 'object_r',
+            seltype => 'etc_t',
+            notify  => Service[$service],
+            ;
+        # Legacy configuration file that's no longer relevant.
+        '/etc/sysconfig/mouse':
+            ensure  => absent,
+            ;
+    } ->
+
+    service { $service:
+        ensure     => $ensure,
+        enable     => $enable,
         hasrestart => true,
         hasstatus  => true,
-        require    => [
-            Package['gpm'],
-        ],
-        subscribe  => [
-            File['/etc/sysconfig/mouse'],
-        ],
     }
 
 }

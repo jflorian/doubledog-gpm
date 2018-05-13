@@ -1,0 +1,11 @@
+# This file is part of the doubledog-gpm Puppet module.
+# Copyright 2018 John Florian
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+---
+gpm::enable:                    true
+gpm::ensure:                    running
+gpm::manage_firewall:           true
+gpm::packages:
+    - gpm
+gpm::service:                   gpm
