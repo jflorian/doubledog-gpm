@@ -1,16 +1,18 @@
 {
-	"name": "doubledog-gpm",
-	"version": "1.0.0",
-	"author": "John Florian",
-	"license": "GPL-3.0",
-	"summary": "A module to manage the gpm mouse server",
-	"source": "https://www.doubledog.org/git/puppet-gpm.git",
-	"operatingsystem_support": [{
-		"operatingsystem": "CentOS",
-		"operatingsystemmajrelease": "7"
-	}, {
-		"operatingsystem": "Fedora",
-		"operatingsystemrelease": ["26", "27", "28"]
-	}],
-	"dependencies": []
+    "name": "doubledog-gpm",
+    "version": "1.0.0",
+    "author": "John Florian",
+    "summary": "A module to manage the gpm mouse server",
+    "license": "GPL-3.0",
+    "source": "https://github.com/jflorian/doubledog-gpm",
+    "project_page": "https://github.com/jflorian/doubledog-gpm",
+    "issues_url": "https://github.com/jflorian/doubledog-gpm/issues",
+    "operatingsystem_support": [{
+        "operatingsystem": "CentOS",
+        "operatingsystemmajrelease": "7"
+    }, {
+        "operatingsystem": "Fedora",
+        "operatingsystemrelease": ["26", "27", "28"]
+    }],
+    "dependencies": []
 }
