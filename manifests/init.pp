@@ -15,10 +15,10 @@
 
 
 class gpm (
-        Boolean                                      $enable,
-        Variant[Boolean, Enum['running', 'stopped']] $ensure,
-        Array[String[1], 1]                          $packages,
-        String[1]                                    $service,
+        Boolean                     $enable,
+        Ddolib::Service::Ensure     $ensure,
+        Array[String[1], 1]         $packages,
+        String[1]                   $service,
     ) {
 
     package { $packages:

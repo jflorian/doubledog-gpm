@@ -23,6 +23,7 @@ All notable changes to this project (since v1.0.0) will be documented in this fi
 ### Added
 - Fedora 29 support
 ### Changed
+- leverage `Ddolib::Service::Ensure` type
 ### Deprecated
 ### Removed
 - Fedora 26 support
