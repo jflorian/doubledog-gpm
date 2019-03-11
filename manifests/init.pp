@@ -10,23 +10,23 @@
 # === Copyright
 #
 # This file is part of the doubledog-gpm Puppet module.
-# Copyright 2010-2018 John Florian
+# Copyright 2010-2019 John Florian
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 
 class gpm (
-        Boolean                                      $enable,
-        Variant[Boolean, Enum['running', 'stopped']] $ensure,
-        Array[String[1], 1]                          $packages,
-        String[1]                                    $service,
+        Boolean                     $enable,
+        Ddolib::Service::Ensure     $ensure,
+        Array[String[1], 1]         $packages,
+        String[1]                   $service,
     ) {
 
     package { $packages:
         ensure => installed,
         notify => Service[$service],
-    } ->
+    }
 
-    file {
+    -> file {
         default:
             owner   => 'root',
             group   => 'root',
@@ -40,9 +40,9 @@ class gpm (
         '/etc/sysconfig/mouse':
             ensure  => absent,
             ;
-    } ->
+    }
 
-    service { $service:
+    -> service { $service:
         ensure     => $ensure,
         enable     => $enable,
         hasrestart => true,
